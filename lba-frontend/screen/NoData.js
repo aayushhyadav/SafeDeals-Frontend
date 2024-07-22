@@ -21,6 +21,6 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 20,
-    fontWeight: 300,
+    fontWeight: '300',
   },
 })

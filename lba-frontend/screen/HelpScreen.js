@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 20,
-    fontWeight: 400,
+    fontWeight: '400',
   },
   body: {
     fontSize: 15,
