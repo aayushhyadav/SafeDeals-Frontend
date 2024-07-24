@@ -30,14 +30,14 @@ export default StatusDialog = ({
         <Text style={styles.label}>{title}</Text>
         {status !== "success" ? (
           <LottieView
-            style={{width: "30%"}}
+            style={{width: "50%", height: "50%"}}
             source={errorAnimation}
             loop={true}
             autoPlay
           />
         ) : (
           <LottieView
-            style={{width: "30%"}}
+            style={{width: "50%", height: "50%"}}
             source={successAnimation}
             loop={true}
             autoPlay
@@ -51,6 +51,8 @@ export default StatusDialog = ({
 const styles = StyleSheet.create({
   statusContainer: {
     alignItems: "center",
+    justifyContent: "center",
+    height: 100
   },
   label: {
     fontSize: 15,
