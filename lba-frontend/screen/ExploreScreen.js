@@ -36,8 +36,8 @@ const ExploreScreen = ({navigation}) => {
       avgLongitude += store.coordinates.longitude
     }
 
-    avgLatitude /= stores.length
-    avgLongitude /= stores.length
+    avgLatitude = (stores.length === 0) ? avgLatitude : avgLatitude / stores.length
+    avgLongitude = (stores.length === 0) ? avgLongitude : avgLongitude / stores.length
 
     return {avgLatitude, avgLongitude}
   }
