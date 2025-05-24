@@ -2,10 +2,19 @@ import React, {useContext} from "react"
 import {Text, View, StyleSheet, ScrollView} from "react-native"
 import {Card} from "@rneui/themed"
 import {MaterialCommunityIcons} from "@expo/vector-icons"
+import {Button} from "@rneui/themed"
+import AsyncStorage from "@react-native-async-storage/async-storage"
+
 import Context from "../store/context"
+import constants from "../utils/constants"
 
 const ProfileScreen = ({navigation}) => {
   const {globalState} = useContext(Context)
+
+  const logout = () => {
+    AsyncStorage.removeItem("sessionToken")
+    navigation.navigate("Login")
+  }
 
   return (
     <View>
@@ -14,6 +23,13 @@ const ProfileScreen = ({navigation}) => {
           <View style={styles.accountContainer}>
             <MaterialCommunityIcons name="account" size={32} />
             <Card.Title>{globalState.name}</Card.Title>
+            <Button
+              title={constants.SIGN_OUT_BUTTON_LABEL}
+              buttonStyle={styles.logoutButtonStyle}
+              titleStyle={{fontWeight: "500"}}
+              onPress={() => logout(navigation)}
+              size="sm"
+            />
           </View>
         </Card>
 
@@ -88,5 +104,11 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginTop: 15,
+  },
+  logoutButtonStyle: {
+    backgroundColor: "black",
+    borderWidth: 1,
+    borderColor: "white",
+    borderRadius: 5,
   },
 })

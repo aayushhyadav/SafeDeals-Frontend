@@ -18,8 +18,6 @@ import GlobalStateProvider from "./store/GlobalStateProvider"
 import {useContext} from "react"
 import Context from "./store/context"
 import {MaterialCommunityIcons} from "@expo/vector-icons"
-import {Button} from "@rneui/themed"
-import constants from "./utils/constants"
 import SplashScreen from "./screen/SplashScreen"
 
 const Stack = createNativeStackNavigator()
@@ -43,16 +41,10 @@ const BusinessUserTabNavigator = () => (
     <Tab.Screen
       name="Account"
       component={ProfileScreen}
-      options={({navigation}) => ({
-        headerRight: () => logoutButtonComponent(navigation),
-      })}
     />
     <Tab.Screen
       name="Help"
       component={HelpScreen}
-      options={({navigation}) => ({
-        headerRight: () => logoutButtonComponent(navigation),
-      })}
     />
   </Tab.Navigator>
 )
@@ -73,16 +65,10 @@ const NormalUserTabNavigator = () => (
     <Tab.Screen
       name="Account"
       component={ProfileScreen}
-      options={({navigation}) => ({
-        headerRight: () => logoutButtonComponent(navigation),
-      })}
     />
     <Tab.Screen
       name="Help"
       component={HelpScreen}
-      options={({navigation}) => ({
-        headerRight: () => logoutButtonComponent(navigation),
-      })}
     />
   </Tab.Navigator>
 )
@@ -92,16 +78,6 @@ const logout = (navigation) => {
   navigation.navigate("Login")
 }
 
-const logoutButtonComponent = (navigation) => (
-  <Button
-    title={constants.SIGN_OUT_BUTTON_LABEL}
-    buttonStyle={styles.logoutButtonStyle}
-    titleStyle={{fontWeight: "500"}}
-    onPress={() => logout(navigation)}
-    size="sm"
-  />
-)
-
 const DashboardStackScreen = () => {
   const {globalState} = useContext(Context)
 
@@ -110,49 +86,43 @@ const DashboardStackScreen = () => {
       <DashboardStack.Screen
         name="MyDashboard"
         component={DashboardScreen}
-        options={({navigation}) => ({
-          title: `Hi ${globalState.name}!`,
-          headerRight: () => logoutButtonComponent(navigation),
+        options={() => ({
+          title: `Hi ${globalState.name}!`
         })}
       />
       <DashboardStack.Screen
         name="ViewBusiness"
         component={ViewBusinessScreen}
-        options={({navigation}) => ({
-          title: `Hi ${globalState.name}!`,
-          headerRight: () => logoutButtonComponent(navigation),
+        options={() => ({
+          title: `Hi ${globalState.name}!`
         })}
       />
       <DashboardStack.Screen
         name="ViewAds"
         component={ViewAdsScreen}
-        options={({navigation}) => ({
-          title: `Hi ${globalState.name}!`,
-          headerRight: () => logoutButtonComponent(navigation),
+        options={() => ({
+          title: `Hi ${globalState.name}!`
         })}
       />
       <DashboardStack.Screen
         name="Statistics"
         component={StatisticsScreen}
-        options={({navigation}) => ({
-          title: `Hi ${globalState.name}!`,
-          headerRight: () => logoutButtonComponent(navigation),
+        options={() => ({
+          title: `Hi ${globalState.name}!`
         })}
       />
       <DashboardStack.Screen
         name="RegisterBusiness"
         component={RegisterBusinessScreen}
-        options={({navigation}) => ({
-          title: `Hi ${globalState.name}!`,
-          headerRight: () => logoutButtonComponent(navigation),
+        options={() => ({
+          title: `Hi ${globalState.name}!`
         })}
       />
       <DashboardStack.Screen
         name="Explore"
         component={ExploreScreen}
-        options={({navigation}) => ({
-          title: `Hi ${globalState.name}!`,
-          headerRight: () => logoutButtonComponent(navigation),
+        options={() => ({
+          title: `Hi ${globalState.name}!`
         })}
       />
     </DashboardStack.Navigator>
@@ -167,17 +137,15 @@ const ExploreStackScreen = () => {
       <ExploreStack.Screen
         name="MyExplore"
         component={ExploreScreen}
-        options={({navigation}) => ({
-          title: `Hi ${globalState.name}!`,
-          headerRight: () => logoutButtonComponent(navigation),
+        options={() => ({
+          title: `Hi ${globalState.name}!`
         })}
       />
       <ExploreStack.Screen
         name="ViewAds"
         component={ViewAdsScreen}
-        options={({navigation}) => ({
-          title: `Hi ${globalState.name}!`,
-          headerRight: () => logoutButtonComponent(navigation),
+        options={() => ({
+          title: `Hi ${globalState.name}!`
         })}
       />
     </ExploreStack.Navigator>
@@ -237,12 +205,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-  },
-  logoutButtonStyle: {
-    backgroundColor: "black",
-    borderWidth: 1,
-    borderColor: "white",
-    borderRadius: 5,
-    marginRight: 5,
-  },
+  }
 })
