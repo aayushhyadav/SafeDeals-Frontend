@@ -156,13 +156,13 @@ const ViewBusinessScreen = ({navigation}) => {
             <Text style={styles.label}>
               Offer Valid Till: {validTill.toISOString().split("T")[0]}
             </Text>
-
-            <DatePicker
-              title="Select"
-              date={validTill}
-              onChange={onChangeDate}
-            />
           </View>
+
+          <DatePicker
+            title="Select"
+            date={validTill}
+            onChange={onChangeDate}
+          />
 
           <Dialog.Actions>
             <Dialog.Button
