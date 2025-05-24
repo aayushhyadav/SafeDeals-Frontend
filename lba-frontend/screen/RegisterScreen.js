@@ -138,12 +138,12 @@ const RegisterScreen = ({navigation}) => {
             itemTextStyle={styles.listItemTextStyle}
           ></Dropdown>
 
-          <Text style={styles.label}>View ads</Text>
+          <Text style={styles.label}>Area for viewing ads</Text>
           <Dropdown
             data={aorOptions}
             labelField="label"
             valueField="value"
-            placeholder="Select area for viewing ads"
+            placeholder="Select"
             placeholderStyle={styles.placeholderStyle}
             onChange={(item) => onChangeAor(item.value)}
             value={aor}
@@ -154,22 +154,24 @@ const RegisterScreen = ({navigation}) => {
 
           <View style={styles.toggleContainer}>
             <Text style={styles.label}>Register as business owner</Text>
-            <View>
-              <Switch
-                trackColor={{false: "#767577", true: "#81b0ff"}}
-                thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleSwitch}
-                value={isEnabled}
-                style={styles.switchStyle}
-              />
-            </View>
           </View>
 
+          <View>
+            <Switch
+              trackColor={{false: "#767577", true: "#81b0ff"}}
+              thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+              style={styles.switchStyle}
+            />
+          </View>
+
+          <Text style={styles.label}>
+            DoB: {date.toISOString().split("T")[0]}
+          </Text>
+
           <View style={styles.dateViewContainer}>
-            <Text style={styles.label}>
-              DoB: {date.toISOString().split("T")[0]}
-            </Text>
             <DatePicker onChange={onChangeDate} title="Select" date={date} />
           </View>
 
@@ -217,7 +219,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   scrollViewContainer: {
-    marginTop: 40,
+    marginTop: 30,
   },
   header: {
     textAlign: "center",
@@ -255,7 +257,7 @@ const styles = StyleSheet.create({
   },
   dateViewContainer: {
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
   },
   placeholderStyle: {
     fontSize: 12,
@@ -268,7 +270,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   switchStyle: {
-    marginTop: 15,
-    marginLeft: 10,
+    marginTop: 10,
+    marginLeft: 5
   },
 })

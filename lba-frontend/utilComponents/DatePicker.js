@@ -1,28 +1,34 @@
-import React from "react"
-import {StyleSheet, View, Pressable} from "react-native"
-import {Button} from "@rneui/themed"
-import {DateTimePickerAndroid} from "@react-native-community/datetimepicker"
+import React, {useState} from "react"
+import {StyleSheet, View, Pressable, Platform} from "react-native"
+import DateTimePicker from "@react-native-community/datetimepicker"
 import {MaterialCommunityIcons} from "@expo/vector-icons"
 
 const DatePicker = ({onChange, title, date}) => {
-  const showDatePicker = (mode) => {
-    DateTimePickerAndroid.open({
-      value: date,
-      onChange,
-      mode,
-      display: "spinner",
-    })
-  }
+  const [show, setShow] = useState(false)
 
   const showMode = () => {
-    showDatePicker("date")
+    setShow(!show);
   }
 
   return (
-    <View style={styles.dateViewContainer}>
-      <Pressable onPress={showMode}>
-        <MaterialCommunityIcons name="calendar" size={32} />
-      </Pressable>
+    <View>
+      <View style={styles.dateViewContainer}>
+        <Pressable onPress={showMode}>
+          <MaterialCommunityIcons name="calendar" size={32} />
+        </Pressable>
+      </View>
+
+      {show && (
+        <View>
+          <DateTimePicker
+            value={date}
+            mode="date"
+            display={Platform.OS === 'ios' ? 'compact' : 'default'}
+            onChange={onChange}
+            textColor="black"
+          />
+        </View>
+      )}
     </View>
   )
 }
@@ -31,7 +37,7 @@ export default DatePicker
 
 const styles = StyleSheet.create({
   dateViewContainer: {
-    marginTop: 30,
+    marginTop: 10,
     marginLeft: 15,
   },
 })
