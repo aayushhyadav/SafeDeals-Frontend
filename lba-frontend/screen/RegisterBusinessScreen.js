@@ -79,7 +79,10 @@ const RegisterBusinessScreen = ({navigation}) => {
         <Loader status={constants.SETTING_UP_BUSINESS} />
       ) : (
         <ScrollView style={styles.scrollViewContainer}>
-          <Text style={styles.heading}>Lets Onboard Your Business!</Text>
+          <View style={styles.headerContainer}>
+            <Text style={styles.heading}>Lets Onboard Your Business!</Text>
+          </View>
+          
           <View>
             <Text style={styles.label}>Store Name</Text>
             <TextInput
@@ -200,9 +203,14 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     marginTop: 60,
   },
+  headerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   heading: {
     fontSize: 20,
-    marginBottom: 20,
+    marginBottom: 20
   },
   input: {
     borderColor: "#ffffff",

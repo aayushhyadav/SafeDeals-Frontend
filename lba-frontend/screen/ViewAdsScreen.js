@@ -82,11 +82,17 @@ const ViewAdsScreen = ({route, navigation}) => {
     return formattedStr
   }
 
+  const isAdValid = (dateString) => {
+    const expDate = new Date(dateString)
+    const todaysDate = new Date()
+    return (expDate.toISOString().split("T")[0] >= todaysDate.toISOString().split("T")[0])
+  }
+
   return ads?.length > 0 ? (
     <ScrollView>
       <View style={styles.container}>
         {ads.map((ad, index) => (
-          <Card key={index} containerStyle={styles.cardContainer}>
+          <Card key={index} containerStyle={[styles.cardContainer, !isAdValid(ad.validTill) && styles.cardContainer.transparent]}>
             <Card.Title style={{fontSize: 13}}>{ad.offer}</Card.Title>
 
             <View style={styles.likesContainer}>
@@ -171,8 +177,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: "42%",
     elevation: 10,
+    transparent: {
+      opacity: 0.5
+    }
   },
   likesContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     flexDirection: "row",
     marginTop: 5,
   },
@@ -183,7 +195,7 @@ const styles = StyleSheet.create({
   },
   label: {
     color: "#5b5b5b",
-    fontSize: 12,
+    fontSize: 11,
   },
   buttonContainer: {
     width: "100%",
