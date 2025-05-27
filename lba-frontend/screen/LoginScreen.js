@@ -3,11 +3,15 @@ import React, {useEffect} from "react"
 import axios from "axios"
 import {Button} from "@rneui/themed"
 import {REACT_APP_LOGIN_API} from "@env"
+import LottieView from "lottie-react-native"
+
 import Context from "../store/context"
 import StatusDialog from "../utilComponents/StatusDialog"
 import constants from "../utils/constants"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import {getSessionToken} from "../utils/helper"
+
+const animation = require("../assets/login_animation.json")
 
 const LoginScreen = ({navigation}) => {
   const [emailAddress, onChangeEmailAddress] = React.useState(null)
@@ -62,7 +66,15 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Welcome Back!</Text>
+      <View>
+        <LottieView
+          style={styles.lottieView}
+          source={animation}
+          loop
+          autoPlay
+        />
+      </View>
+
       <View>
         <Text style={styles.label}>Email</Text>
         <TextInput
@@ -122,6 +134,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  lottieView: {
+    height: 150,
+    width: 150
   },
   input: {
     borderColor: "#ffffff",

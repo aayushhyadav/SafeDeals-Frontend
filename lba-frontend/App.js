@@ -1,8 +1,7 @@
-import {StyleSheet, Text, View} from "react-native"
+import {StyleSheet} from "react-native"
 import {NavigationContainer} from "@react-navigation/native"
 import {createNativeStackNavigator} from "@react-navigation/native-stack"
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
-import AsyncStorage from "@react-native-async-storage/async-storage"
 
 import LoginScreen from "./screen/LoginScreen"
 import RegisterScreen from "./screen/RegisterScreen"
@@ -73,11 +72,6 @@ const NormalUserTabNavigator = () => (
   </Tab.Navigator>
 )
 
-const logout = (navigation) => {
-  AsyncStorage.removeItem("sessionToken")
-  navigation.navigate("Login")
-}
-
 const DashboardStackScreen = () => {
   const {globalState} = useContext(Context)
 
@@ -94,35 +88,35 @@ const DashboardStackScreen = () => {
         name="ViewBusiness"
         component={ViewBusinessScreen}
         options={() => ({
-          title: `Hi ${globalState.name}!`
+          title: "My Stores"
         })}
       />
       <DashboardStack.Screen
         name="ViewAds"
         component={ViewAdsScreen}
         options={() => ({
-          title: `Hi ${globalState.name}!`
+          title: "Ads"
         })}
       />
       <DashboardStack.Screen
         name="Statistics"
         component={StatisticsScreen}
         options={() => ({
-          title: `Hi ${globalState.name}!`
+          title: "Customer Interest"
         })}
       />
       <DashboardStack.Screen
         name="RegisterBusiness"
         component={RegisterBusinessScreen}
         options={() => ({
-          title: `Hi ${globalState.name}!`
+          title: "Registration"
         })}
       />
       <DashboardStack.Screen
         name="Explore"
         component={ExploreScreen}
         options={() => ({
-          title: `Hi ${globalState.name}!`
+          title: "Explore"
         })}
       />
     </DashboardStack.Navigator>
@@ -138,14 +132,14 @@ const ExploreStackScreen = () => {
         name="MyExplore"
         component={ExploreScreen}
         options={() => ({
-          title: `Hi ${globalState.name}!`
+          title: "Explore"
         })}
       />
       <ExploreStack.Screen
         name="ViewAds"
         component={ViewAdsScreen}
         options={() => ({
-          title: `Hi ${globalState.name}!`
+          title: "Ads"
         })}
       />
     </ExploreStack.Navigator>
@@ -181,7 +175,7 @@ export default function App() {
           <Stack.Screen
             name="Register"
             component={RegisterScreen}
-            options={{headerTitle: "SafeDeals"}}
+            options={{headerTitle: ""}}
           />
           <Stack.Screen
             name="Dashboard"
