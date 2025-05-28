@@ -9,9 +9,9 @@ import {
 } from "react-native"
 import {Card, Image} from "@rneui/themed"
 
-const businessCardBg = require("../assets/business_card_bg.jpg")
-const exploreCardBg = require("../assets/explore_card_bg.jpg")
-const viewStoresCardBg = require("../assets/view_stores_card_bg.jpg")
+const businessCardBg = require("../assets//bg_img/business_card_bg.jpg")
+const exploreCardBg = require("../assets/bg_img/explore_card_bg.jpg")
+const viewStoresCardBg = require("../assets/bg_img/view_stores_card_bg.jpg")
 
 const DashboardScreen = ({navigation}) => {
   const initialState = {

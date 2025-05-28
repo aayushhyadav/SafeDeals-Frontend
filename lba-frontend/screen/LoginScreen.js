@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View, TextInput, TouchableOpacity} from "react-native"
 import React, {useEffect} from "react"
 import axios from "axios"
-import {Button} from "@rneui/themed"
+import {Button, Image} from "@rneui/themed"
 import {REACT_APP_LOGIN_API} from "@env"
 import LottieView from "lottie-react-native"
 
@@ -12,6 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import {getSessionToken} from "../utils/helper"
 
 const animation = require("../assets/login_animation.json")
+const bgImg = require("../assets/bg_img/login_bg.jpg")
 
 const LoginScreen = ({navigation}) => {
   const [emailAddress, onChangeEmailAddress] = React.useState(null)
@@ -116,6 +117,8 @@ const LoginScreen = ({navigation}) => {
         </View>
       </View>
 
+      <Image source={bgImg} style={styles.img} />
+
       <StatusDialog
         isVisible={errorStatus}
         handleOnBackDropPress={closeStatusDialog}
@@ -183,4 +186,8 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderRadius: 10,
   },
+  img: {
+    width: 250,
+    height: 250
+  }
 })

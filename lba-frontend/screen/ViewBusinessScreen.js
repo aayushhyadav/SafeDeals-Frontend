@@ -19,14 +19,14 @@ import DatePicker from "../utilComponents/DatePicker"
 import Context from "../store/context"
 import constants from "../utils/constants"
 
-const RESTAURANT = require("../assets/RESTAURANT.jpg")
-const APPAREL = require("../assets/APPAREL.jpg")
-const DESSERTS = require("../assets/DESSERTS.jpg")
-const ELECTRONICS = require("../assets/ELECTRONICS.jpg")
-const FOOTWEAR = require("../assets/FOOTWEAR.jpg")
-const GENERAL_STORE = require("../assets/GENERAL_STORE.jpg")
-const PHARMACY = require("../assets/PHARMACY.jpg")
-const DEFAULT = require("../assets/DEFAULT.jpg")
+const RESTAURANT = require("../assets/bg_img/RESTAURANT.jpg")
+const APPAREL = require("../assets/bg_img/APPAREL.jpg")
+const DESSERTS = require("../assets/bg_img/DESSERTS.jpg")
+const ELECTRONICS = require("../assets/bg_img/ELECTRONICS.jpg")
+const FOOTWEAR = require("../assets/bg_img/FOOTWEAR.jpg")
+const GENERAL_STORE = require("../assets/bg_img/GENERAL_STORE.jpg")
+const PHARMACY = require("../assets/bg_img/PHARMACY.jpg")
+const DEFAULT = require("../assets/bg_img/DEFAULT.jpg")
 
 const bgImages = {
   RESTAURANT,
