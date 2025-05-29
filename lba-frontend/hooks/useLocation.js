@@ -28,6 +28,7 @@ const getAdData = async (epsilon, lat, long, aor) => {
 
     const nearByStores = await axios.get(url)
     return {nearByStores, newAor}
+
   } catch (error) {
     console.log(error)
   }
@@ -53,7 +54,6 @@ const findEpsilon = async (cityClusters, latitude, longitude) => {
   }
 
   if (!epsilon) return 0.01
-
   return epsilon
 }
 
@@ -70,7 +70,6 @@ export default useLocation = () => {
   const getLocation = async () => {
     try {
       const {status} = await Location.requestForegroundPermissionsAsync()
-
       if (status !== "granted") return
 
       const {
@@ -87,6 +86,7 @@ export default useLocation = () => {
       const epsilon = cityClusters
         ? await findEpsilon(cityClusters.data, latitude, longitude)
         : 0.01
+
       const data = await getAdData(
         epsilon,
         latitude,
@@ -95,7 +95,8 @@ export default useLocation = () => {
       )
 
       setAdData(data.nearByStores)
-      setNewAor(newAor)
+      setNewAor(data.newAor / 1000)
+
     } catch (error) {
       console.log({error, message: error.message})
     }
